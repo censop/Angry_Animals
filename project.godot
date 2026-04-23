@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="AngryAnimals"
+run/main_scene="uid://cks684nwp21js"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [dotnet]
 

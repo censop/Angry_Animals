@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cs25yy3dbkrts"]
+
+[ext_resource type="Texture2D" uid="uid://diintowtp2sf7" path="res://Assets/env/MainBG.png" id="1_p8rbg"]
+
+[node name="Main" type="Control" unique_id=1375790641]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1706676233]
+layout_mode = 1
+scale = Vector2(0.9162539, 0.96347034)
+texture = ExtResource("1_p8rbg")
