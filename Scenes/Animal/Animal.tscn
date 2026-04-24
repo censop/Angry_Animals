@@ -15,7 +15,9 @@ radius = 19.026299
 [node name="Animal" type="RigidBody2D" unique_id=1359782538 node_paths=PackedStringArray("_label", "_stretchSound", "_launchSound", "_kickSound")]
 input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_lib84")
+freeze = true
 contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_oryip")
 _label = NodePath("Label")
 _stretchSound = NodePath("StretchSound")

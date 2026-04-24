@@ -1,9 +1,16 @@
 [gd_scene format=3 uid="uid://cks684nwp21js"]
 
+[ext_resource type="Script" uid="uid://c532fpfc0w364" path="res://Scenes/LevelBase/LevelBase.cs" id="1_3lxj6"]
 [ext_resource type="Texture2D" uid="uid://d0h8tl5wxu6iu" path="res://Assets/scene/colored_castle.png" id="1_5ufo3"]
 [ext_resource type="PackedScene" uid="uid://hry4tlce2bq2" path="res://Scenes/Animal/Animal.tscn" id="2_bgw71"]
+[ext_resource type="PackedScene" uid="uid://uidfsm6s7nw4" path="res://Scenes/Water/Water.tscn" id="3_78m1b"]
+[ext_resource type="PackedScene" uid="uid://bd21dabd3m375" path="res://Scenes/GameUi/GameUi.tscn" id="5_lmtt4"]
+[ext_resource type="PackedScene" uid="uid://cmr0ohs8u1emb" path="res://Scenes/Cup/Cup.tscn" id="6_ooqsx"]
 
-[node name="LevelBase" type="Node" unique_id=1357355173]
+[node name="LevelBase" type="Node" unique_id=1357355173 node_paths=PackedStringArray("_marker")]
+script = ExtResource("1_3lxj6")
+_marker = NodePath("Marker2D")
+_animalScene = ExtResource("2_bgw71")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=632085595]
 position = Vector2(-13, -324)
@@ -11,6 +18,17 @@ scale = Vector2(1.2, 1.2)
 texture = ExtResource("1_5ufo3")
 centered = false
 
-[node name="Animal" parent="." unique_id=1359782538 instance=ExtResource("2_bgw71")]
-position = Vector2(130, 322)
-freeze = true
+[node name="Water" parent="." unique_id=412663606 instance=ExtResource("3_78m1b")]
+position = Vector2(578, 612)
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=552669910]
+position = Vector2(158, 284)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1416178958]
+
+[node name="GameUi" parent="CanvasLayer" unique_id=1432289541 instance=ExtResource("5_lmtt4")]
+offset_top = -2.0
+offset_bottom = -2.0
+
+[node name="Cup" parent="." unique_id=1029614617 instance=ExtResource("6_ooqsx")]
+position = Vector2(391, 411)

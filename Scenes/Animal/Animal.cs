@@ -7,7 +7,7 @@ public partial class Animal : RigidBody2D
 	private readonly Vector2 DRAG_LIM_MIN = new Vector2(-60, 0);
 	private readonly Vector2 DRAG_LIM_MAX = new Vector2(0, 60);
 
-	private const float IMPULSE_MULT = 25.0f;
+	private const float IMPULSE_MULT = 20.0f;
 
 	[Export] private Label _label;
 	[Export] private AudioStreamPlayer2D _stretchSound;
@@ -18,6 +18,7 @@ public partial class Animal : RigidBody2D
 	private Vector2 _dragStart = Vector2.Zero;
 	private Vector2 _draggedVector = Vector2.Zero;
 	private Vector2 _start = Vector2.Zero;
+	private bool _isDead = false;
 
     public override void _UnhandledInput(InputEvent @event)
     {
@@ -30,8 +31,24 @@ public partial class Animal : RigidBody2D
 		public override void _Ready()
 	{
 		InputEvent += OnInputEvent;
+		SleepingStateChanged += OnSleepingStateChanged;
 		_start = Position;
 	}
+
+    private void OnSleepingStateChanged()
+    {
+        if (!Sleeping) return;
+
+		foreach (var body in GetCollidingBodies())
+		{
+			if (body is Cup cup)
+			{
+				cup.Die();
+			}
+		}
+		Die();
+    }
+
 
     public override void _Process(double delta)
 	{
@@ -65,6 +82,7 @@ public partial class Animal : RigidBody2D
 		_launchSound.Play();
 		Freeze = false;
 		ApplyCentralImpulse(CalculateImpulse());
+		SignalHub.EmitOnAttemptMade();
 	}
 
 	private void HandleDragging()
@@ -84,5 +102,13 @@ public partial class Animal : RigidBody2D
 			StartDragging();
 		}
     }
+
+	public void Die()
+	{
+		if(_isDead) return;
+		_isDead = true;
+		SignalHub.EmitOnAnimalDied();
+		QueueFree();		
+	}
 
 }

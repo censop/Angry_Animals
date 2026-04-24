@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bd21dabd3m375"]
+
+[ext_resource type="Script" uid="uid://ba1gp52qtmut8" path="res://Scenes/GameUi/GameUi.cs" id="1_anb74"]
+[ext_resource type="LabelSettings" uid="uid://daxbl7fcb1c3f" path="res://Resources/Ui48.tres" id="1_mb7aw"]
+
+[node name="GameUi" type="Control" unique_id=1432289541 node_paths=PackedStringArray("_attemptsLabel", "_levelLabel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_anb74")
+_attemptsLabel = NodePath("MC/VB/AttemptsLabel")
+_levelLabel = NodePath("MC/VB/LevelLabel")
+
+[node name="MC" type="MarginContainer" parent="." unique_id=924435791]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+
+[node name="VB" type="VBoxContainer" parent="MC" unique_id=1183970279]
+layout_mode = 2
+
+[node name="LevelLabel" type="Label" parent="MC/VB" unique_id=1113291391]
+layout_mode = 2
+text = "Level 00"
+label_settings = ExtResource("1_mb7aw")
+
+[node name="AttemptsLabel" type="Label" parent="MC/VB" unique_id=752817500]
+layout_mode = 2
+text = "Attempts 000"
+label_settings = ExtResource("1_mb7aw")
