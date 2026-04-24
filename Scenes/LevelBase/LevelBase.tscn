@@ -12,5 +12,5 @@ texture = ExtResource("1_5ufo3")
 centered = false
 
 [node name="Animal" parent="." unique_id=1359782538 instance=ExtResource("2_bgw71")]
-position = Vector2(279, 141)
+position = Vector2(130, 322)
 freeze = true
